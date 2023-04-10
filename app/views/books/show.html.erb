@@ -1,5 +1,6 @@
 <body>
-  <p id="notice"></p>
+  <div><%= flash[:success] %></div>
+  <div><%= flash[:updated] %></div>
   <p>
     <strong>Title:</strong>
     &nbsp;<%= @book.title %>
