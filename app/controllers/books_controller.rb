@@ -6,7 +6,6 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id)
       flash[:success] = "Book was successfully created."
     else
-
       render :index
     end
   end
@@ -33,7 +32,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to '/index'
+    redirect_to books_path
     flash[:notice] = "Book was successfully destroyed."
   end
   private

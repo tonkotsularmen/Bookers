@@ -9,7 +9,7 @@
    </ul>
   <% end %>
 
-  <%= form_with model: @book, url:update_book_path(@book.id), method: :patch do |f| %>
+  <%= form_with model: @book do |f| %>
    <h4>Title</h4>
    <%= f.text_field :title %>
 
@@ -18,5 +18,5 @@
 
    <%= f.submit 'Update Book' %>
   <% end %>
-  <%= link_to "Show", book_path %> | <%= link_to "Back", "/index" %>
+  <%= link_to "Show", book_path %> | <%= link_to "Back", books_path %>
 </body>
