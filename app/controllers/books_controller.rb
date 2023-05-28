@@ -10,20 +10,21 @@ class BooksController < ApplicationController
     end
   end
   def index
-    @books = Book.all
-    @book = Book.new
+    @books = Book.all#Bookモデルとやり取りをしているデータ全てを取得するallメソッド
+    @book = Book.new#新規投稿用の箱を作るためのnewメソッド
   end
   def show
-    @book = Book.find(params[:id])
+    @book = Book.find(params[:id])#データベースからlistsテーブルに保存されているデータをfindメソッドで一つだけ取得する
+                                  #findメソッドはテーブルのidカラムとparamsのidを比較して合致するレコードを取得するメソッド
   end
 
   def edit
-    @book = Book.find(params[:id])
+    @book = Book.find(params[:id])#データベースからlistsテーブルに保存されているデータをfindメソッドで一つだけ取得する
   end
   def update
-    @book = Book.find(params[:id])
-    if @book.update(book_params)
-      redirect_to book_path(@book.id)
+    @book = Book.find(params[:id])#変更したいレコードを取得して@bookに代入
+    if @book.update(book_params)#まずbook_paramsメソッドが実行されてparams.require(:book).permit(:title, :body)を返す。変更する値のハッシュのようなもの{title: "~", body: "~"}を返して
+      redirect_to book_path(@book.id)#それを引数として@bookがupdateメソッドをする実行する。
       flash[:updated] = "Book was successfully updated."
     else
       render :edit
